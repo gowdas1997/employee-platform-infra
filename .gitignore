@@ -1,0 +1,19 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Keep dependency lock file
+!.terraform.lock.hcl
+
+# Terraform plan files
+*.tfplan
+
+# Sensitive variable files
+*.tfvars
+!terraform.tfvars.example
