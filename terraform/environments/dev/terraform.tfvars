@@ -20,3 +20,5 @@ availability_zone_2 = "us-east-1b"
 
 ec2_role_name         = "employee-platform-dev-ec2-role"
 instance_profile_name = "employee-platform-dev-instance-profile"
+
+jenkins_instance_type = "t3.large"

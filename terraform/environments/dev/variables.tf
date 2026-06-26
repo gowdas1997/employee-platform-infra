@@ -96,3 +96,10 @@ variable "instance_profile_name" {
   description = "EC2 Instance Profile Name"
   type        = string
 }
+
+########### Ec2 ###########
+variable "jenkins_instance_type" {
+  description = "Instance type for Jenkins EC2"
+  type        = string
+  default     = "t3.large"
+}
