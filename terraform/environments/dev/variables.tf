@@ -81,3 +81,18 @@ variable "availability_zone_2" {
   description = "Availability Zone 2"
   type        = string
 }
+
+
+#########################################
+# IAM
+#########################################
+
+variable "ec2_role_name" {
+  description = "EC2 IAM Role Name"
+  type        = string
+}
+
+variable "instance_profile_name" {
+  description = "EC2 Instance Profile Name"
+  type        = string
+}
