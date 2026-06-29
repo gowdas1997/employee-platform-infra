@@ -81,24 +81,33 @@ java -version
 
 echo "Installing Jenkins..."
 
-# Add Jenkins GPG Key
-curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | \
-tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+# Install Java Runtime (safe if already installed)
+apt-get update -y
+apt-get install -y fontconfig openjdk-21-jre
+
+echo "Java Version:"
+java -version
+
+# Create keyrings directory
+mkdir -p /etc/apt/keyrings
+
+# Download Jenkins GPG Key
+wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 
 # Add Jenkins Repository
-echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | \
-tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] \
+https://pkg.jenkins.io/debian-stable binary/" \
+| tee /etc/apt/sources.list.d/jenkins.list > /dev/null
 
-# Update Package Index
+# Update Repository
 apt-get update -y
 
 # Install Jenkins
 apt-get install -y jenkins
 
-# Enable Jenkins Service
+# Enable and Start Jenkins
 systemctl enable jenkins
-
-# Start Jenkins Service
 systemctl start jenkins
 
 echo "Jenkins installation completed."
